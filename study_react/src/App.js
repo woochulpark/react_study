@@ -20,13 +20,25 @@ class App extends Component{
     ]
   } 
 
-  switchNameHandler = (newName) => {
+  //switchNameHandler = (newName) => {
+    nameChangedHandler = (event) => {
     //console.log('Was clicked!');
     // Do Not Use : this.state.persons[0].name = 'David';
+    // 두번째 input에서 입력이 들어오면 실시간으로 이름이 바뀜
     this.setState({
       persons:[
+        { name: 'David', age: 25},
+        { name: event.target.value, age: 25},
+        { name: 'Nick', age: 25}
+      ]
+    })
+  }
+
+  switchNameHandler = (newName) => {
+    this.setState({
+      persons:[
+        { name: 'David', age: 25},
         { name: newName, age: 25},
-        { name: 'Lina', age: 25},
         { name: 'Nick', age: 25}
       ]
     })
@@ -42,7 +54,7 @@ class App extends Component{
         {/*<button onClick={()=>this.switchNameHandler('바보')}>Switch Name</button>*/} 
         <button onClick={this.switchNameHandler.bind(this,'바보')}>Switch Name</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={()=>this.switchNameHandler('멍청이')} >Nice to meet you.</Person>
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} >Nice to meet you.</Person>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
       </div>
     )
