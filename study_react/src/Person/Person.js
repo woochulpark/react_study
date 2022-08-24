@@ -3,7 +3,14 @@ import React from 'react';
 // 부모 component 에서 자식으로 props 전달
 
 const person = (props) => {
-    return <p>I'm a {props.name} and I am {props.age} years old!</p>
+    return ( 
+        <div>
+            <p>I'm a {props.name} and I am {props.age} years old!</p>
+            <p>
+                {props.children}
+            </p>
+        </div>    
+    );
 }
 
 // 동적 content 
