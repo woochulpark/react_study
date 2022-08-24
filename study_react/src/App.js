@@ -37,8 +37,8 @@ class App extends Component{
   switchNameHandler = (newName) => {
     this.setState({
       persons:[
-        { name: 'David', age: 25},
         { name: newName, age: 25},
+        { name: 'Lina', age: 25},
         { name: 'Nick', age: 25}
       ]
     })
@@ -55,7 +55,7 @@ class App extends Component{
         <button onClick={this.switchNameHandler.bind(this,'바보')}>Switch Name</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} >Nice to meet you.</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={() => this.switchNameHandler('멍청이')} > 눌러라. </Person>
       </div>
     )
   }
