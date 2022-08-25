@@ -72,12 +72,22 @@ class App extends Component{
     // persons 변수 지정 기본값 null null 일경우 persons에 값을 넣어 보여줌.
     let persons = null;
 
+    // Hard coding으로 일일히 지정하기도 하지만 this.state.person은 array이기 때문에 
+    //map 함수를 적용 data를 차례로 읽게 함.
+    
     if(this.state.showPersons){
       persons = (
         <div>
+          {this.state.persons.map(person => {
+            return(
+              <Person name={person.name} age={person.age} />
+            )
+          })}
+          {/*
           <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
           <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} >Nice to meet you.</Person>
           <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={() => this.switchNameHandler('또라이')} > 눌러라. </Person>
+        */}
         </div>
       )
     }
