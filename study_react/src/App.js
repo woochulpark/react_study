@@ -97,7 +97,8 @@ class App extends Component{
     // css border-radius는 안됨. borderRadius
     // css 그대로 쓰면 오류가 나는 경우도 있으니 확인.
     const style = {
-      backgourndColor: 'white',
+      backgroundColor: 'blue',
+      color:'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -105,6 +106,8 @@ class App extends Component{
       borderRadius: '3px',
       boxShadow: '0 2px 3px #ccc'
     }
+
+    
     //jsx 내부에서는 if가 불가능 하지만 밖으로 벗어나면 if가 가능
     // persons 변수 지정 기본값 null null 일경우 persons에 값을 넣어 보여줌.
     let persons = null;
@@ -133,8 +136,9 @@ class App extends Component{
         */}
         </div>
       )
+      style.backgroundColor = 'red';
     }
-
+    
     return (
       <div className="App">
         <h1>Hi, I'm React App</h1>
@@ -153,10 +157,13 @@ class App extends Component{
         </div>: null}
        */}
         {persons}
+        
       </div>
 
     )
+    
   }
+  
   //props component 전달 
   /*  
   render() {
