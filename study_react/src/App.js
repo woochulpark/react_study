@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import './App.css';
 import './Person/Person.css'
 import Person from './Person/Person';
+//radium 설치
+import Radium from 'radium';
 
 //class
 // 클래스 내에서 사용 하는 기본 Component는 세가지로 
@@ -104,7 +106,11 @@ class App extends Component{
       padding: '8px',
       curosr: 'pointer',
       borderRadius: '3px',
-      boxShadow: '0 2px 3px #ccc'
+      boxShadow: '0 2px 3px #ccc',
+      ':hover': {
+        backgroundColor : 'lightgreen',
+        color: 'black'
+      }
     }
 
     
@@ -137,6 +143,11 @@ class App extends Component{
         </div>
       )
       style.backgroundColor = 'red';
+
+      style[':hover'] = {
+        backgroundColor : 'salmon',
+        color : 'black'
+      }
     }
     
     // css class 가 복수 인 경우 List 형태 [] 로 만듬
@@ -218,5 +229,5 @@ function App() {
   );
 }
 */
-export default App;
+export default Radium(App);
 //https://codinghub.tistory.com/category/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%28Programming%29/%EB%A6%AC%EC%95%A1%ED%8A%B8%28React%29 참조

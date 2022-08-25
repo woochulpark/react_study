@@ -1,5 +1,6 @@
 //src Person/person.js
 import React from 'react';
+import Radium from 'radium';
 // 부모 component 에서 자식으로 props 전달
 //value가 고정값이 아니면 지정으로 defaultValue로 해야 함 
 const person = (props) => {
@@ -28,4 +29,4 @@ const person = () => {
     return <p>I'm a Person!</p>
 }
 */
-export default person;
+export default Radium(person);
