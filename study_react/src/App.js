@@ -68,6 +68,19 @@ class App extends Component{
       borderRadius: '3px',
       boxShadow: '0 2px 3px #ccc'
     }
+    //jsx 내부에서는 if가 불가능 하지만 밖으로 벗어나면 if가 가능
+    // persons 변수 지정 기본값 null null 일경우 persons에 값을 넣어 보여줌.
+    let persons = null;
+
+    if(this.state.showPersons){
+      persons = (
+        <div>
+          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} >Nice to meet you.</Person>
+          <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={() => this.switchNameHandler('또라이')} > 눌러라. </Person>
+        </div>
+      )
+    }
 
     return (
       <div className="App">
@@ -84,7 +97,9 @@ class App extends Component{
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} >Nice to meet you.</Person>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={() => this.switchNameHandler('멍청이')} > 눌러라. </Person>
         </div>: null}
+        {persons}
       </div>
+
     )
   }
   //props component 전달 
