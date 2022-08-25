@@ -12,12 +12,17 @@ import Person from './Person/Person';
 //functional Component는 props만 사용 가능
 //props는 부모에게서 받고 변경이 불가
 class App extends Component{
-
-  state = {
-    persons : [
+  /* 
       { name : 'David', age: 28},
       { name : 'lina', age:29},
       { name: 'nick', age:26}
+    */
+  state = {
+    persons : [
+      { id: 'asfa1', name : 'David', age: 28},
+      { id: 'vasdf1', name : 'lina', age:29},
+      { id: 'asdf1', name: 'nick', age:26}
+     
     ],
     otherState: 'some other value',
     showPersons:false
@@ -99,7 +104,7 @@ class App extends Component{
           {this.state.persons.map((person,index) => {
             
             return(
-              <Person key={index} click={() => this.deletePersonHandler(index)} name={person.name} age={person.age} />              
+              <Person key={person.id} click={() => this.deletePersonHandler(index)} name={person.name} age={person.age} />              
             )
           })}
           {/*
