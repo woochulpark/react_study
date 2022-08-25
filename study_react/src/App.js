@@ -31,9 +31,9 @@ class App extends Component{
     // 두번째 input에서 입력이 들어오면 실시간으로 이름이 바뀜
     this.setState({
       persons:[
-        { name: 'David', age: 25},
-        { name: event.target.value, age: 25},
-        { name: 'Nick', age: 25}
+        { name: 'David', age: 25, id:0},
+        { name: event.target.value, age: 25, id:1},
+        { name: 'Nick', age: 25, id: 2}
       ]
     })
   }
@@ -44,6 +44,8 @@ class App extends Component{
     // !(not)을 붙여서 현 상황에 대해서 반대를 state해 줌.
   }
 
+  // 나이 교체 기능 newName은 jsx에서 지정한 이름을 받아서 교체 하는 것
+  /*
   switchNameHandler = (newName) => {
     this.setState({
       persons:[
@@ -52,6 +54,17 @@ class App extends Component{
         { name: 'Nick', age: 25}
       ]
     })
+  }
+  */
+
+  deletePersonHandler = (personIndex) => {
+    
+   // const persons = this.state.persons;
+    //const persons = [...this.state.persons];
+    const persons = this.state.persons.slice();
+    persons.splice(personIndex, 1);
+    //console.log(persons);
+    this.setState({persons : persons})
   }
 
 
@@ -78,9 +91,15 @@ class App extends Component{
     if(this.state.showPersons){
       persons = (
         <div>
-          {this.state.persons.map(person => {
+          {/*
+          // 이 방식은 best가 아니다. warninig이 나타난다.
+          {this.state.persons.map((person, index) => {
+          */} 
+            
+          {this.state.persons.map((person,index) => {
+            
             return(
-              <Person name={person.name} age={person.age} />
+              <Person key={index} click={() => this.deletePersonHandler(index)} name={person.name} age={person.age} />              
             )
           })}
           {/*
@@ -101,12 +120,14 @@ class App extends Component{
         {/*<button onClick={()=>this.switchNameHandler('바보')}>Switch Name</button>*/} 
        {/* <button style={style} onClick={this.switchNameHandler.bind(this,'바보')}>Switch Name</button>*/}
        <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+       {/*
        {this.state.showPersons === true ?
        <div>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} >Nice to meet you.</Person>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={() => this.switchNameHandler('멍청이')} > 눌러라. </Person>
         </div>: null}
+       */}
         {persons}
       </div>
 
