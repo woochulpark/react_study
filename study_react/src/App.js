@@ -39,8 +39,9 @@ class App extends Component{
   }
 
   togglePersonsHandler = () => {
-    const doesShadow = this.state.showPersons;
-    this.setState({showPersons: !doesShadow})
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow})
+    // !(not)을 붙여서 현 상황에 대해서 반대를 state해 줌.
   }
 
   switchNameHandler = (newName) => {
