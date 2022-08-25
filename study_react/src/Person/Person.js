@@ -4,7 +4,7 @@ import React from 'react';
 //value가 고정값이 아니면 지정으로 defaultValue로 해야 함 
 const person = (props) => {
     return ( 
-        <div>
+        <div className='Person'>
             <p onClick={props.click}>I'm a {props.name} and I am {props.age} years old!</p>
             <p>
                 {props.children}

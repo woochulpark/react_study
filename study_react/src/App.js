@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 //import logo from './logo.svg';
 import './App.css';
+import './Person/Person.css'
 import Person from './Person/Person';
 
 //class
@@ -45,6 +46,18 @@ class App extends Component{
   }
 
   render(){
+    // css border-radius는 안됨. borderRadius
+    // css 그대로 쓰면 오류가 나는 경우도 있으니 확인.
+    const style = {
+      backgourndColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      curosr: 'pointer',
+      borderRadius: '3px',
+      boxShadow: '0 2px 3px #ccc'
+    }
+
     return (
       <div className="App">
         <h1>Hi, I'm React App</h1>
@@ -52,7 +65,7 @@ class App extends Component{
         {/*button event 지정(camelCase)*/}
         {/*button click 에서 agrument 넘겨주기 2가지*/}
         {/*<button onClick={()=>this.switchNameHandler('바보')}>Switch Name</button>*/} 
-        <button onClick={this.switchNameHandler.bind(this,'바보')}>Switch Name</button>
+        <button style={style} onClick={this.switchNameHandler.bind(this,'바보')}>Switch Name</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} >Nice to meet you.</Person>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={() => this.switchNameHandler('멍청이')} > 눌러라. </Person>
