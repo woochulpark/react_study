@@ -18,7 +18,10 @@ class App extends Component{
       { name : 'David', age: 28},
       { name : 'lina', age:29},
       { name: 'nick', age:26}
-    ]
+    ],
+    otherState: 'some other value',
+    showPersons:false
+
   } 
 
   //switchNameHandler = (newName) => {
@@ -35,6 +38,11 @@ class App extends Component{
     })
   }
 
+  togglePersonsHandler = () => {
+    const doesShadow = this.state.showPersons;
+    this.setState({showPersons: !doesShadow})
+  }
+
   switchNameHandler = (newName) => {
     this.setState({
       persons:[
@@ -44,6 +52,8 @@ class App extends Component{
       ]
     })
   }
+
+
 
   render(){
     // css border-radius는 안됨. borderRadius
@@ -65,10 +75,14 @@ class App extends Component{
         {/*button event 지정(camelCase)*/}
         {/*button click 에서 agrument 넘겨주기 2가지*/}
         {/*<button onClick={()=>this.switchNameHandler('바보')}>Switch Name</button>*/} 
-        <button style={style} onClick={this.switchNameHandler.bind(this,'바보')}>Switch Name</button>
+       {/* <button style={style} onClick={this.switchNameHandler.bind(this,'바보')}>Switch Name</button>*/}
+       <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+       {this.state.showPersons === true ?
+       <div>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} >Nice to meet you.</Person>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={() => this.switchNameHandler('멍청이')} > 눌러라. </Person>
+        </div>: null}
       </div>
     )
   }
