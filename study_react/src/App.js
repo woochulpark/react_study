@@ -30,10 +30,28 @@ class App extends Component{
   } 
 
   //switchNameHandler = (newName) => {
-    nameChangedHandler = (event) => {
+   // nameChangedHandler = (event) => {
+   //  첫번째 namechangeHandler
+   nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p=>{
+      return p.id === id;
+    })
+
+    const person = {
+      ...this.state.persons[personIndex]
+    }
+
+    // const person = Object.assign({}, this.state.person[personIndex]);  
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+    this.setState({persons: persons})
+
     //console.log('Was clicked!');
     // Do Not Use : this.state.persons[0].name = 'David';
     // 두번째 input에서 입력이 들어오면 실시간으로 이름이 바뀜
+    /*
     this.setState({
       persons:[
         { name: 'David', age: 25, id:0},
@@ -41,6 +59,7 @@ class App extends Component{
         { name: 'Nick', age: 25, id: 2}
       ]
     })
+    */
   }
 
   togglePersonsHandler = () => {
@@ -104,7 +123,7 @@ class App extends Component{
           {this.state.persons.map((person,index) => {
             
             return(
-              <Person key={person.id} click={() => this.deletePersonHandler(index)} name={person.name} age={person.age} />              
+              <Person changed={(event) => this.nameChangedHandler(event, person.id)} key={person.id} click={() => this.deletePersonHandler(index)} name={person.name} age={person.age} />              
             )
           })}
           {/*
