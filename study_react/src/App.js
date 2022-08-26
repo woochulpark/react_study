@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 //import logo from './logo.svg';
-import './App.css';
+//import './App.css';
+import classes from './App.css';
 import './Person/Person.css'
 import Person from './Person/Person';
 //radium 설치
@@ -155,24 +156,28 @@ class App extends Component{
     }
     
     // css class 가 복수 인 경우 List 형태 [] 로 만듬
-    let classes = [];
+    //let classes = [];
+    let assignedClasses = [];
 
     if (this.state.persons.length <= 2 ) {
       //classes 에 red를 넣자
-      classes.push('red');
+      //classes.push('red');
+      assignedClasses.push(classes.red);
     }
 
     if (this.state.persons.length <= 1 ) {
       // red 다음에 추가
-      classes.push('bold');
+      //classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
     console.log(classes);
     return (
      
-      <div className="App"  >
+      <div className={classes.App}> {/*className="App"  >*}
         <h1>Hi, I'm React App</h1>
         {/* css class 를 복수로 뿌려 줄때 join에 공백을 넣어서 red bold 로 만들어줌 */}
-        <p className={classes.join(' ')} >This is really working!</p>
+        {/*<p className={classes.join(' ')} >This is really working!</p>*/}
+        <p className={assignedClasses.join(' ')} >This is really working!</p>
         {/*button event 지정(camelCase)*/}
         {/*button click 에서 agrument 넘겨주기 2가지*/}
         {/*<button onClick={()=>this.switchNameHandler('바보')}>Switch Name</button>*/} 
