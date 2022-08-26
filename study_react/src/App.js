@@ -121,6 +121,7 @@ class App extends Component{
     //jsx 내부에서는 if가 불가능 하지만 밖으로 벗어나면 if가 가능
     // persons 변수 지정 기본값 null null 일경우 persons에 값을 넣어 보여줌.
     let persons = null;
+    let btnClass = '';
 
     // Hard coding으로 일일히 지정하기도 하지만 this.state.person은 array이기 때문에 
     //map 함수를 적용 data를 차례로 읽게 함.
@@ -153,6 +154,7 @@ class App extends Component{
         color : 'black'
       }
       */
+     btnClass = classes.Red;
     }
     
     // css class 가 복수 인 경우 List 형태 [] 로 만듬
@@ -183,7 +185,7 @@ class App extends Component{
         {/*<button onClick={()=>this.switchNameHandler('바보')}>Switch Name</button>*/} 
        {/* <button style={style} onClick={this.switchNameHandler.bind(this,'바보')}>Switch Name</button>*/}
        {/*<button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>*/}
-       <button  onClick={this.togglePersonsHandler}>Toggle Persons</button>
+       <button className={btnClass}  onClick={this.togglePersonsHandler}>Toggle Persons</button>
        {/*
        {this.state.showPersons === true ?
        <div>
