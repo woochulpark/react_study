@@ -4,7 +4,8 @@ import './App.css';
 import './Person/Person.css'
 import Person from './Person/Person';
 //radium 설치
-import Radium from 'radium';
+// StyleRoot component를 import
+import Radium, { StyleRoot } from 'radium';
 
 //class
 // 클래스 내에서 사용 하는 기본 Component는 세가지로 
@@ -99,20 +100,20 @@ class App extends Component{
     // css border-radius는 안됨. borderRadius
     // css 그대로 쓰면 오류가 나는 경우도 있으니 확인.
     const style = {
-      backgroundColor: 'blue',
+      backgroundColor: 'teal',
       color:'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
       curosr: 'pointer',
       borderRadius: '3px',
-      boxShadow: '0 2px 3px #ccc',
+      boxShadow: '0 2px 3px #ccc',     
       ':hover': {
         backgroundColor : 'lightgreen',
-        color: 'black'
+        color: 'black'      
       }
+      
     }
-
     
     //jsx 내부에서는 if가 불가능 하지만 밖으로 벗어나면 if가 가능
     // persons 변수 지정 기본값 null null 일경우 persons에 값을 넣어 보여줌.
@@ -164,10 +165,11 @@ class App extends Component{
     }
     console.log(classes);
     return (
-      <div className="App">
+      <StyleRoot>
+      <div className="App"  >
         <h1>Hi, I'm React App</h1>
         {/* css class 를 복수로 뿌려 줄때 join에 공백을 넣어서 red bold 로 만들어줌 */}
-        <p className={classes.join(' ')}>This is really working!</p>
+        <p className={classes.join(' ')} >This is really working!</p>
         {/*button event 지정(camelCase)*/}
         {/*button click 에서 agrument 넘겨주기 2가지*/}
         {/*<button onClick={()=>this.switchNameHandler('바보')}>Switch Name</button>*/} 
@@ -184,7 +186,7 @@ class App extends Component{
         {persons}
         
       </div>
-
+       </StyleRoot>
     )
     
   }
