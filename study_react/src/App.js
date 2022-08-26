@@ -5,7 +5,7 @@ import './Person/Person.css'
 import Person from './Person/Person';
 //radium 설치
 // StyleRoot component를 import
-import Radium, { StyleRoot } from 'radium';
+//import Radium, { StyleRoot } from 'radium';
 
 //class
 // 클래스 내에서 사용 하는 기본 Component는 세가지로 
@@ -99,6 +99,8 @@ class App extends Component{
   render(){
     // css border-radius는 안됨. borderRadius
     // css 그대로 쓰면 오류가 나는 경우도 있으니 확인.
+    //27화 Radium 부분 없애고 css 모듈 작성
+    /*
     const style = {
       backgroundColor: 'teal',
       color:'white',
@@ -114,7 +116,7 @@ class App extends Component{
       }
       
     }
-    
+    */
     //jsx 내부에서는 if가 불가능 하지만 밖으로 벗어나면 if가 가능
     // persons 변수 지정 기본값 null null 일경우 persons에 값을 넣어 보여줌.
     let persons = null;
@@ -143,12 +145,13 @@ class App extends Component{
         */}
         </div>
       )
-      style.backgroundColor = 'red';
-
+      //style.backgroundColor = 'red';
+          /*
       style[':hover'] = {
         backgroundColor : 'salmon',
         color : 'black'
       }
+      */
     }
     
     // css class 가 복수 인 경우 List 형태 [] 로 만듬
@@ -165,7 +168,7 @@ class App extends Component{
     }
     console.log(classes);
     return (
-      <StyleRoot>
+     
       <div className="App"  >
         <h1>Hi, I'm React App</h1>
         {/* css class 를 복수로 뿌려 줄때 join에 공백을 넣어서 red bold 로 만들어줌 */}
@@ -174,7 +177,8 @@ class App extends Component{
         {/*button click 에서 agrument 넘겨주기 2가지*/}
         {/*<button onClick={()=>this.switchNameHandler('바보')}>Switch Name</button>*/} 
        {/* <button style={style} onClick={this.switchNameHandler.bind(this,'바보')}>Switch Name</button>*/}
-       <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+       {/*<button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>*/}
+       <button  onClick={this.togglePersonsHandler}>Toggle Persons</button>
        {/*
        {this.state.showPersons === true ?
        <div>
@@ -186,7 +190,7 @@ class App extends Component{
         {persons}
         
       </div>
-       </StyleRoot>
+      
     )
     
   }
@@ -231,5 +235,6 @@ function App() {
   );
 }
 */
-export default Radium(App);
+//export default Radium(App);
+export default App;
 //https://codinghub.tistory.com/category/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%28Programming%29/%EB%A6%AC%EC%95%A1%ED%8A%B8%28React%29 참조
